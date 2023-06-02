@@ -1,2 +1,2 @@
-## Data Structure study code related
+## Data Structure and algorithms study code related
 
