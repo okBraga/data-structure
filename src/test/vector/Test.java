@@ -1,34 +1,17 @@
 package test.vector;
 
-import main.java.com.okbraga.datastructures.Vector;
 import main.java.com.okbraga.datastructures.models.Student;
+
+import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) {
-        Vector list = new Vector();
-
-        Student student1 = new Student();
-        Student student2 = new Student();
-        Student student3 = new Student();
-        Student student4 = new Student();
-        Student student5 = new Student();
-
-        student1.setName("Filipe");
-        student2.setName("Millena");
-        student3.setName("Heitor");
-        student4.setName("Cindy");
-        student5.setName("Flintch");
-
-        list.add(student1);
-        list.add(student2);
-        list.add(student3);
-        list.add(student4);
-        list.add(student5);
-
-        System.out.println(list);
-
-        list.remove(1);
-
-        System.out.println(list);
+        ArrayList vectorWithoutGenerics = new ArrayList();
+        ArrayList<Student> vectorWithGenerics = new ArrayList<Student>();
+        Student student = new Student();
+        vectorWithoutGenerics.add(student);
+        vectorWithGenerics.add(student);
+        Student student1 = (Student) vectorWithoutGenerics.get(0);
+        Student student2 = vectorWithGenerics.get(0);
     }
 }

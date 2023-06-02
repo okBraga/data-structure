@@ -2,7 +2,7 @@ package main.java.com.okbraga.datastructures;
 
 public class Vector {
 
-    private Object[] objects = new Object[100];
+    private Object[] objects = new Object[10000];
 
     private int size = 0;
 

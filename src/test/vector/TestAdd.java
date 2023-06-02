@@ -17,10 +17,5 @@ public class TestAdd {
         list.add(student2);
 
         System.out.println(list);
-
-        list.add(0 ,student2);
-        list.add(1 ,student1);
-
-        System.out.println(list);
     }
 }
