@@ -1,4 +1,4 @@
-package main.java.com.okbraga.datastructures;
+package main.java.com.okbraga.datastructures.vector;
 
 public class Vector {
 
@@ -6,8 +6,8 @@ public class Vector {
 
     private int size = 0;
 
-    private boolean isValid(int position) {
-        return position >= 0 && position < this.size;
+    private boolean isNotValid(int position) {
+        return position < 0 || position >= this.size;
     }
 
     private boolean isPresent(int position) {
@@ -32,7 +32,9 @@ public class Vector {
 
     public void add(int position, Object Object) {
         this.dinamycGrowth();
-        if (!this.isValid(position)) throw new IllegalArgumentException("Invalid Position");
+
+        if (this.isNotValid(position)) throw new IllegalArgumentException("Invalid Position");
+
         for (int i = this.size - 1; i >= position; i -= 1) {
             this.objects[i + 1] = this.objects[i];
         }
@@ -43,7 +45,8 @@ public class Vector {
 
 
     public Object get(int position) {
-        if (!this.isValid(position)) throw new IllegalArgumentException("Invalid position");
+        if (this.isNotValid(position)) throw new IllegalArgumentException("Invalid position");
+
         return this.objects[position];
     }
 
@@ -59,10 +62,12 @@ public class Vector {
 
     public boolean contains(Object Object) {
         for (int i = 0; i < this.size; i++) {
+
             if (Object.equals(this.objects[i])) {
                 return true;
             }
         }
+
         return false;
     }
 

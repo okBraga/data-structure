@@ -1,7 +1,7 @@
 package test.vector;
 
-import main.java.com.okbraga.datastructures.Vector;
 import main.java.com.okbraga.datastructures.models.Student;
+import main.java.com.okbraga.datastructures.vector.Vector;
 
 public class TestSize {
     public static void main(String[] args) {

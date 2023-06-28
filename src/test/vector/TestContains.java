@@ -1,7 +1,7 @@
 package test.vector;
 
-import main.java.com.okbraga.datastructures.Vector;
 import main.java.com.okbraga.datastructures.models.Student;
+import main.java.com.okbraga.datastructures.vector.Vector;
 
 public class TestContains {
     public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class TestContains {
 
         Student Student = new Student();
         Student.setName("Ana");
-        
+
         System.out.println(list.contains(Student));
     }
 }
