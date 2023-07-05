@@ -17,11 +17,53 @@ public class HashSet {
     }
 
     private int hashFunction(String word) {
-        return word.toLowerCase().charAt(0) % 26;
+        int hashCode = this.hashCode(word);
+        hashCode = Math.abs(hashCode);
+        return hashCode % this.table.size();
+    }
+
+    private int hashCode(String word) {
+        int code = 1;
+        for (int i = 0; i < word.length(); i++) {
+            code = 31 * code + word.charAt(i);
+        }
+        return code;
+    }
+
+    public void printTable() {
+        for (List<String> list : this.table) {
+            System.out.println("[");
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println("*");
+            }
+            System.out.println("]");
+        }
+    }
+
+    public void resizeTable(int newCapacity) {
+        List<String> words = this.getAll();
+        this.table.clear();
+
+        for (int i = 0; i < newCapacity; i++) {
+            this.table.add(new LinkedList<>());
+        }
+
+        for (String word : words) {
+            this.add(word);
+        }
+    }
+
+    public void verifyCharge() {
+        int capacity = this.table.size();
+        double charge = (double) this.size / capacity;
+
+        if (charge > 0.75) this.resizeTable(capacity * 2);
+        else if (charge < 0.25) this.resizeTable(Math.max(capacity / 2, 10));
     }
 
     public void add(String word) {
         if (!this.contains(word)) {
+            this.verifyCharge();
             int index = this.hashFunction(word);
             List<String> list = this.table.get(index);
             list.add(word);
@@ -35,6 +77,7 @@ public class HashSet {
             List<String> list = this.table.get(index);
             list.remove(word);
             this.size--;
+            verifyCharge();
         }
     }
 
